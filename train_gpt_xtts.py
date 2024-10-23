@@ -175,7 +175,7 @@ def  train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_a
     config.lr_scheduler = "MultiStepLR"
     config.lr_scheduler_params = {"milestones": [50000 * 18, 150000 * 18, 300000 * 18], "gamma": 0.5, "last_epoch": -1}
     config.test_sentences = []
-    config.save_step= 0
+    config.save_step= 100000000000000000000000000
 
     # init the model from config
     model = GPTTrainer.init_from_config(config)
