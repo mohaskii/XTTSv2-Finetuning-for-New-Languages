@@ -100,4 +100,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     extend_tokenizer(args)
-    adjust_config(args)
+    adjust_config(args) 

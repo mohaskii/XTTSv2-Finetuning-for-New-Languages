@@ -42,7 +42,7 @@ def create_xtts_trainer_parser():
 
 
 
-def train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_audio_length, max_text_length, lr, weight_decay, save_step):
+def  train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_audio_length, max_text_length, lr, weight_decay, save_step):
     #  Logging parameters
     RUN_NAME = "GPT_XTTS_FT"
     PROJECT_NAME = "XTTS_trainer"
@@ -165,7 +165,6 @@ def train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_au
     config.print_step = 50
     config.plot_step = 100
     config.log_model_step = 100
-    config.save_step = save_step
     config.save_n_checkpoints = 1
     config.save_checkpoints = True
     config.print_eval = False
@@ -203,12 +202,6 @@ def train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_au
         eval_samples=eval_samples,
     )
     trainer.fit()
-
-    # get the longest text audio file to use as speaker reference
-    samples_len = [len(item["text"].split(" ")) for item in train_samples]
-    longest_text_idx =  samples_len.index(max(samples_len))
-    speaker_ref = train_samples[longest_text_idx]["audio_file"]
-
     trainer_out_path = trainer.output_path
 
     # deallocate VRAM and RAM
