@@ -227,7 +227,7 @@ def train_gpt(
         "last_epoch": -1,
     }
     config.test_sentences = []
-    config.save_step = 9999999999
+    config.save_step = save_step
 
     # init the model from config
     model = GPTTrainer.init_from_config(config)
